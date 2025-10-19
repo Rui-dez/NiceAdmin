@@ -1,5 +1,5 @@
 <?php
-include 'connect.php'; // Connect to the database
+include 'connect.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $text = $_POST['text'];
@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $message = $_POST['message'];
   $date = $_POST['date'];
 
-  $sql = "INSERT INTO users (text, email, message, date)
+  $sql = "INSERT INTO user (text, email, message, date)
           VALUES ('$text', '$email', '$message', '$date')";
 
   echo "<!DOCTYPE html>
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($conn->query($sql) === TRUE) {
     echo "<div class='alert alert-success'>✅ Data saved successfully!</div>";
 
-    // 🧾 Display the entered data
+    
     echo "<div class='card p-3 mt-3'>
             <h4>Submitted Information</h4>
             <p><strong>Text:</strong> $text</p>
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p><strong>Date:</strong> $date</p>
           </div>";
 
-    // 🔙 Back button to return to form
+    
     echo "<a href='forms-elements.php' class='btn btn-secondary mt-3'>← Back to Form</a>";
 
   } else {
